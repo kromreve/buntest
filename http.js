@@ -1,5 +1,6 @@
 import { generateRandomString } from './utils.js';
 import { getAccessToken } from './spotify.js';
+import { readFileSync } from 'fs';
 
 export default {
   port: 3000,
@@ -33,7 +34,7 @@ export default {
         <head>
           <script>
             setTimeout(function() {
-              window.location.href = '/client/home.html';
+              window.location.href = './client/home.html';
             }, 3000);
           </script>
         </head>
@@ -42,6 +43,11 @@ export default {
         </body>
       </html>`;
       return new Response(html, { headers: { 'Content-Type': 'text/html' } });
+    }
+
+    if (url.pathname === '/auth/client/home.html') {
+      const homepageHtml = await readFileSync('./client/home.html', 'utf8');
+      return new Response(homepageHtml, { headers: { 'Content-Type': 'text/html' } });
     }
 
     return new Response('Welcome to Bun!');
