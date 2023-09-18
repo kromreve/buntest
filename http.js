@@ -27,7 +27,21 @@ export default {
       const accessToken = await getAccessToken(code);
       // Save the access token and use it for future API calls
       // You can store the access token in a cookie or session
-      return new Response('Logged in successfully!');
+      const html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <script>
+            setTimeout(function() {
+              window.location.href = '/client/home.html';
+            }, 3000);
+          </script>
+        </head>
+        <body>
+          <p>Logged in successfully! Redirecting to the homepage...</p>
+        </body>
+      </html>`;
+      return new Response(html, { headers: { 'Content-Type': 'text/html' } });
     }
 
     return new Response('Welcome to Bun!');
