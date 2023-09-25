@@ -33,6 +33,7 @@ export default {
       <html>
         <head>
           <script>
+          document.cookie = 'access_token=${accessToken}; path=/';
             setTimeout(function() {
               window.location.href = './client/home.html';
             }, 3000);
@@ -53,6 +54,11 @@ export default {
     if (url.pathname === '/home.css') {
       const cssContent = readFileSync('./client/css/home.css', 'utf8');
       return new Response(cssContent, { headers: { 'Content-Type': 'text/css' } });
+    }
+
+    if (url.pathname === '/currentTrack.js') {
+      const jsContent = readFileSync('./client/js/currentTrack.js', 'utf8');
+      return new Response(jsContent, { headers: { 'Content-Type': 'text/js' } });
     }
 
     return new Response('Welcome to Bun!');

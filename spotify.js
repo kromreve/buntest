@@ -1,3 +1,4 @@
+import SpotifyWebApi from 'spotify-web-api-js';
 const clientId = 'b68cdab7b33d4656a3e514c08a3598b5';
 const clientSecret = '49c95fe5520e4091ba2cee4879605763';
 const redirectUri = 'http://localhost:3000/auth/callback';
