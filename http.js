@@ -50,13 +50,7 @@ export default {
       return new Response(homepageHtml, { headers: { 'Content-Type': 'text/html' } });
     }
 
-    if (url.pathname.startsWith('.client/css/')) {
-      const cssPath = '.' + url.pathname;
-      const cssContent = readFileSync(cssPath, 'utf8');
-      return new Response(cssContent, { headers: { 'Content-Type': 'text/css' } });
-    }
-
-    if (url.pathname === '/client/css/home.css') {
+    if (url.pathname === '/home.css') {
       const cssContent = readFileSync('./client/css/home.css', 'utf8');
       return new Response(cssContent, { headers: { 'Content-Type': 'text/css' } });
     }
